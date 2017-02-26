@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sahira_hotel_travelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="sahira_hotel_travelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookingHotels" EntityType="sahira_hotel_travelModel.BookingHotel" />
+    <EntitySet Name="BookingTrips" EntityType="sahira_hotel_travelModel.BookingTrip" />
+    <EntitySet Name="Customers" EntityType="sahira_hotel_travelModel.Customer" />
+    <EntitySet Name="CustomerTypes" EntityType="sahira_hotel_travelModel.CustomerType" />
+    <EntitySet Name="Galleries" EntityType="sahira_hotel_travelModel.Gallery" />
+    <EntitySet Name="Hotels" EntityType="sahira_hotel_travelModel.Hotel" />
+    <EntitySet Name="Regions" EntityType="sahira_hotel_travelModel.Region" />
+    <EntitySet Name="RoomTypes" EntityType="sahira_hotel_travelModel.RoomType" />
+    <EntitySet Name="TripDestinations" EntityType="sahira_hotel_travelModel.TripDestination" />
+    <EntitySet Name="TripPackages" EntityType="sahira_hotel_travelModel.TripPackage" />
+    <EntitySet Name="TripSchedules" EntityType="sahira_hotel_travelModel.TripSchedule" />
+    <EntitySet Name="Users" EntityType="sahira_hotel_travelModel.User" />
+    <EntitySet Name="UserTypes" EntityType="sahira_hotel_travelModel.UserType" />
+    <AssociationSet Name="FK_BookingHotel_Customer" Association="sahira_hotel_travelModel.FK_BookingHotel_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="BookingHotel" EntitySet="BookingHotels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingHotel_Hotel" Association="sahira_hotel_travelModel.FK_BookingHotel_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="BookingHotel" EntitySet="BookingHotels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingHotel_RoomType" Association="sahira_hotel_travelModel.FK_BookingHotel_RoomType">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="BookingHotel" EntitySet="BookingHotels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingTrip_Customer" Association="sahira_hotel_travelModel.FK_BookingTrip_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="BookingTrip" EntitySet="BookingTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingTrip_Hotel" Association="sahira_hotel_travelModel.FK_BookingTrip_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="BookingTrip" EntitySet="BookingTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingTrip_RoomType" Association="sahira_hotel_travelModel.FK_BookingTrip_RoomType">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="BookingTrip" EntitySet="BookingTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingTrip_TripPackage" Association="sahira_hotel_travelModel.FK_BookingTrip_TripPackage">
+      <End Role="TripPackage" EntitySet="TripPackages" />
+      <End Role="BookingTrip" EntitySet="BookingTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_CustomerType" Association="sahira_hotel_travelModel.FK_Customer_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerTypes" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gallery_TripDestination" Association="sahira_hotel_travelModel.FK_Gallery_TripDestination">
+      <End Role="TripDestination" EntitySet="TripDestinations" />
+      <End Role="Gallery" EntitySet="Galleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomType_Hotel" Association="sahira_hotel_travelModel.FK_RoomType_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="RoomType" EntitySet="RoomTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripPackage_Hotel" Association="sahira_hotel_travelModel.FK_TripPackage_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="TripPackage" EntitySet="TripPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripDestination_Region" Association="sahira_hotel_travelModel.FK_TripDestination_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="TripDestination" EntitySet="TripDestinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripPackage_RoomType" Association="sahira_hotel_travelModel.FK_TripPackage_RoomType">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="TripPackage" EntitySet="TripPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripDestination_TripPackage" Association="sahira_hotel_travelModel.FK_TripDestination_TripPackage">
+      <End Role="TripPackage" EntitySet="TripPackages" />
+      <End Role="TripDestination" EntitySet="TripDestinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripSchedule_TripPackage" Association="sahira_hotel_travelModel.FK_TripSchedule_TripPackage">
+      <End Role="TripPackage" EntitySet="TripPackages" />
+      <End Role="TripSchedule" EntitySet="TripSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="sahira_hotel_travelModel.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BookingHotel">
+    <Key>
+      <PropertyRef Name="id_booking" />
+    </Key>
+    <Property Name="id_booking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="id_hotel" Type="Int32" Nullable="false" />
+    <Property Name="id_roomType" Type="Int32" Nullable="false" />
+    <Property Name="check_in_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="check_out_date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="sahira_hotel_travelModel.FK_BookingHotel_Customer" FromRole="BookingHotel" ToRole="Customer" />
+    <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_BookingHotel_Hotel" FromRole="BookingHotel" ToRole="Hotel" />
+    <NavigationProperty Name="RoomType" Relationship="sahira_hotel_travelModel.FK_BookingHotel_RoomType" FromRole="BookingHotel" ToRole="RoomType" />
+  </EntityType>
+  <EntityType Name="BookingTrip">
+    <Key>
+      <PropertyRef Name="id_booking_trip" />
+    </Key>
+    <Property Name="id_booking_trip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <Property Name="id_roomType" Type="Int32" Nullable="false" />
+    <Property Name="id_hotel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Customer" FromRole="BookingTrip" ToRole="Customer" />
+    <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Hotel" FromRole="BookingTrip" ToRole="Hotel" />
+    <NavigationProperty Name="RoomType" Relationship="sahira_hotel_travelModel.FK_BookingTrip_RoomType" FromRole="BookingTrip" ToRole="RoomType" />
+    <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_BookingTrip_TripPackage" FromRole="BookingTrip" ToRole="TripPackage" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id_customer" />
+    </Key>
+    <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nationality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_customerType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookingHotels" Relationship="sahira_hotel_travelModel.FK_BookingHotel_Customer" FromRole="Customer" ToRole="BookingHotel" />
+    <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Customer" FromRole="Customer" ToRole="BookingTrip" />
+    <NavigationProperty Name="CustomerType" Relationship="sahira_hotel_travelModel.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
+  </EntityType>
+  <EntityType Name="CustomerType">
+    <Key>
+      <PropertyRef Name="id_customerType" />
+    </Key>
+    <Property Name="id_customerType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="sahira_hotel_travelModel.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="id_gallery" />
+    </Key>
+    <Property Name="id_gallery" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_trip" Type="Int32" Nullable="false" />
+    <Property Name="photo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TripDestination" Relationship="sahira_hotel_travelModel.FK_Gallery_TripDestination" FromRole="Gallery" ToRole="TripDestination" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="id_hotel" />
+    </Key>
+    <Property Name="id_hotel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="star" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookingHotels" Relationship="sahira_hotel_travelModel.FK_BookingHotel_Hotel" FromRole="Hotel" ToRole="BookingHotel" />
+    <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Hotel" FromRole="Hotel" ToRole="BookingTrip" />
+    <NavigationProperty Name="RoomTypes" Relationship="sahira_hotel_travelModel.FK_RoomType_Hotel" FromRole="Hotel" ToRole="RoomType" />
+    <NavigationProperty Name="TripPackages" Relationship="sahira_hotel_travelModel.FK_TripPackage_Hotel" FromRole="Hotel" ToRole="TripPackage" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="id_region" />
+    </Key>
+    <Property Name="id_region" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TripDestinations" Relationship="sahira_hotel_travelModel.FK_TripDestination_Region" FromRole="Region" ToRole="TripDestination" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="id_roomType" />
+    </Key>
+    <Property Name="id_roomType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_hotel" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numOfRoom" Type="Int32" Nullable="false" />
+    <Property Name="normalPrice" Type="Double" Nullable="false" />
+    <Property Name="packagePrice" Type="Double" />
+    <NavigationProperty Name="BookingHotels" Relationship="sahira_hotel_travelModel.FK_BookingHotel_RoomType" FromRole="RoomType" ToRole="BookingHotel" />
+    <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_RoomType" FromRole="RoomType" ToRole="BookingTrip" />
+    <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_RoomType_Hotel" FromRole="RoomType" ToRole="Hotel" />
+    <NavigationProperty Name="TripPackages" Relationship="sahira_hotel_travelModel.FK_TripPackage_RoomType" FromRole="RoomType" ToRole="TripPackage" />
+  </EntityType>
+  <EntityType Name="TripDestination">
+    <Key>
+      <PropertyRef Name="id_trip" />
+    </Key>
+    <Property Name="id_trip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_region" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="localPrice" Type="Double" Nullable="false" />
+    <Property Name="internationalPrice" Type="Double" />
+    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Galleries" Relationship="sahira_hotel_travelModel.FK_Gallery_TripDestination" FromRole="TripDestination" ToRole="Gallery" />
+    <NavigationProperty Name="Region" Relationship="sahira_hotel_travelModel.FK_TripDestination_Region" FromRole="TripDestination" ToRole="Region" />
+    <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_TripDestination_TripPackage" FromRole="TripDestination" ToRole="TripPackage" />
+  </EntityType>
+  <EntityType Name="TripPackage">
+    <Key>
+      <PropertyRef Name="id_package" />
+    </Key>
+    <Property Name="id_package" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_hotel" Type="Int32" Nullable="false" />
+    <Property Name="id_roomType" Type="Int32" Nullable="false" />
+    <Property Name="totalPrice" Type="Double" Nullable="false" />
+    <Property Name="dayOfTrip" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_TripPackage" FromRole="TripPackage" ToRole="BookingTrip" />
+    <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_TripPackage_Hotel" FromRole="TripPackage" ToRole="Hotel" />
+    <NavigationProperty Name="RoomType" Relationship="sahira_hotel_travelModel.FK_TripPackage_RoomType" FromRole="TripPackage" ToRole="RoomType" />
+    <NavigationProperty Name="TripDestinations" Relationship="sahira_hotel_travelModel.FK_TripDestination_TripPackage" FromRole="TripPackage" ToRole="TripDestination" />
+    <NavigationProperty Name="TripSchedules" Relationship="sahira_hotel_travelModel.FK_TripSchedule_TripPackage" FromRole="TripPackage" ToRole="TripSchedule" />
+  </EntityType>
+  <EntityType Name="TripSchedule">
+    <Key>
+      <PropertyRef Name="id_schedule" />
+    </Key>
+    <Property Name="id_schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <Property Name="pic" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tour_guide" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="driver" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="capacity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_TripSchedule_TripPackage" FromRole="TripSchedule" ToRole="TripPackage" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_userType" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserType" Relationship="sahira_hotel_travelModel.FK_User_UserType" FromRole="User" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="id_userType" />
+    </Key>
+    <Property Name="id_userType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="sahira_hotel_travelModel.FK_User_UserType" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_BookingHotel_Customer">
+    <End Type="sahira_hotel_travelModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingHotel" Role="BookingHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="id_customer" />
+      </Principal>
+      <Dependent Role="BookingHotel">
+        <PropertyRef Name="id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingHotel_Hotel">
+    <End Type="sahira_hotel_travelModel.Hotel" Role="Hotel" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingHotel" Role="BookingHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="id_hotel" />
+      </Principal>
+      <Dependent Role="BookingHotel">
+        <PropertyRef Name="id_hotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingHotel_RoomType">
+    <End Type="sahira_hotel_travelModel.RoomType" Role="RoomType" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingHotel" Role="BookingHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="id_roomType" />
+      </Principal>
+      <Dependent Role="BookingHotel">
+        <PropertyRef Name="id_roomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingTrip_Customer">
+    <End Type="sahira_hotel_travelModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingTrip" Role="BookingTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="id_customer" />
+      </Principal>
+      <Dependent Role="BookingTrip">
+        <PropertyRef Name="id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingTrip_Hotel">
+    <End Type="sahira_hotel_travelModel.Hotel" Role="Hotel" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingTrip" Role="BookingTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="id_hotel" />
+      </Principal>
+      <Dependent Role="BookingTrip">
+        <PropertyRef Name="id_hotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingTrip_RoomType">
+    <End Type="sahira_hotel_travelModel.RoomType" Role="RoomType" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingTrip" Role="BookingTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="id_roomType" />
+      </Principal>
+      <Dependent Role="BookingTrip">
+        <PropertyRef Name="id_roomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingTrip_TripPackage">
+    <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.BookingTrip" Role="BookingTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripPackage">
+        <PropertyRef Name="id_package" />
+      </Principal>
+      <Dependent Role="BookingTrip">
+        <PropertyRef Name="id_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_CustomerType">
+    <End Type="sahira_hotel_travelModel.CustomerType" Role="CustomerType" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="id_customerType" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="id_customerType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gallery_TripDestination">
+    <End Type="sahira_hotel_travelModel.TripDestination" Role="TripDestination" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.Gallery" Role="Gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripDestination">
+        <PropertyRef Name="id_trip" />
+      </Principal>
+      <Dependent Role="Gallery">
+        <PropertyRef Name="id_trip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomType_Hotel">
+    <End Type="sahira_hotel_travelModel.Hotel" Role="Hotel" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.RoomType" Role="RoomType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="id_hotel" />
+      </Principal>
+      <Dependent Role="RoomType">
+        <PropertyRef Name="id_hotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripPackage_Hotel">
+    <End Type="sahira_hotel_travelModel.Hotel" Role="Hotel" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="id_hotel" />
+      </Principal>
+      <Dependent Role="TripPackage">
+        <PropertyRef Name="id_hotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripDestination_Region">
+    <End Type="sahira_hotel_travelModel.Region" Role="Region" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.TripDestination" Role="TripDestination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="id_region" />
+      </Principal>
+      <Dependent Role="TripDestination">
+        <PropertyRef Name="id_region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripPackage_RoomType">
+    <End Type="sahira_hotel_travelModel.RoomType" Role="RoomType" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="id_roomType" />
+      </Principal>
+      <Dependent Role="TripPackage">
+        <PropertyRef Name="id_roomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripDestination_TripPackage">
+    <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.TripDestination" Role="TripDestination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripPackage">
+        <PropertyRef Name="id_package" />
+      </Principal>
+      <Dependent Role="TripDestination">
+        <PropertyRef Name="id_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripSchedule_TripPackage">
+    <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.TripSchedule" Role="TripSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripPackage">
+        <PropertyRef Name="id_package" />
+      </Principal>
+      <Dependent Role="TripSchedule">
+        <PropertyRef Name="id_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Type="sahira_hotel_travelModel.UserType" Role="UserType" Multiplicity="1" />
+    <End Type="sahira_hotel_travelModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="id_userType" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="id_userType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

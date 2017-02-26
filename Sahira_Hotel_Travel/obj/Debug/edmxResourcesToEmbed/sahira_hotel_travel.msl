@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sahira_hotel_travelModelStoreContainer" CdmEntityContainer="sahira_hotel_travelEntities">
+    <EntitySetMapping Name="BookingHotels">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.BookingHotel">
+        <MappingFragment StoreEntitySet="BookingHotel">
+          <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+          <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+          <ScalarProperty Name="id_roomType" ColumnName="id_roomType" />
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_booking" ColumnName="id_booking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingTrips">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.BookingTrip">
+        <MappingFragment StoreEntitySet="BookingTrip">
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="id_roomType" ColumnName="id_roomType" />
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_booking_trip" ColumnName="id_booking_trip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="id_customerType" ColumnName="id_customerType" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerType">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id_customerType" ColumnName="id_customerType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galleries">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.Gallery">
+        <MappingFragment StoreEntitySet="Gallery">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="id_trip" ColumnName="id_trip" />
+          <ScalarProperty Name="id_gallery" ColumnName="id_gallery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotels">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.Hotel">
+        <MappingFragment StoreEntitySet="Hotel">
+          <ScalarProperty Name="star" ColumnName="star" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypes">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.RoomType">
+        <MappingFragment StoreEntitySet="RoomType">
+          <ScalarProperty Name="packagePrice" ColumnName="packagePrice" />
+          <ScalarProperty Name="normalPrice" ColumnName="normalPrice" />
+          <ScalarProperty Name="numOfRoom" ColumnName="numOfRoom" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="id_roomType" ColumnName="id_roomType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TripDestinations">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripDestination">
+        <MappingFragment StoreEntitySet="TripDestination">
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+          <ScalarProperty Name="internationalPrice" ColumnName="internationalPrice" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_trip" ColumnName="id_trip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TripPackages">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripPackage">
+        <MappingFragment StoreEntitySet="TripPackage">
+          <ScalarProperty Name="dayOfTrip" ColumnName="dayOfTrip" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="id_roomType" ColumnName="id_roomType" />
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TripSchedules">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripSchedule">
+        <MappingFragment StoreEntitySet="TripSchedule">
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="driver" ColumnName="driver" />
+          <ScalarProperty Name="tour_guide" ColumnName="tour_guide" />
+          <ScalarProperty Name="pic" ColumnName="pic" />
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+          <ScalarProperty Name="id_schedule" ColumnName="id_schedule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id_userType" ColumnName="id_userType" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_userType" ColumnName="id_userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
