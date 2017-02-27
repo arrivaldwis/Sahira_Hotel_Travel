@@ -13,3 +13,21 @@
 \\mac\home\documents\visual studio 2013\Projects\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.SqlServer.dll
 \\mac\home\documents\visual studio 2013\Projects\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.xml
 \\mac\home\documents\visual studio 2013\Projects\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\Sahira_Hotel_Travel.exe.config
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.exe
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.pdb
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\Sahira_Hotel_Travel.exe
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\Sahira_Hotel_Travel.pdb
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.dll
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.xml
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.csprojResolveAssemblyReference.cache
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.Properties.Resources.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnAdmin.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnCustomer.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.frmMain.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.View.frmMasterBase.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.csproj.GenerateResource.Cache
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnHotel.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnAreaWisata.resources

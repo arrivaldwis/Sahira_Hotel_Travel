@@ -35,6 +35,7 @@ namespace Sahira_Hotel_Travel
         public virtual DbSet<RoomType> RoomTypes { get; set; }
         public virtual DbSet<TripDestination> TripDestinations { get; set; }
         public virtual DbSet<TripPackage> TripPackages { get; set; }
+        public virtual DbSet<TripPackageDetail> TripPackageDetails { get; set; }
         public virtual DbSet<TripSchedule> TripSchedules { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }

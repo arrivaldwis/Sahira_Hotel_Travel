@@ -17,14 +17,14 @@ namespace Sahira_Hotel_Travel
         public TripPackage()
         {
             this.BookingTrips = new HashSet<BookingTrip>();
-            this.TripDestinations = new HashSet<TripDestination>();
+            this.TripPackageDetails = new HashSet<TripPackageDetail>();
             this.TripSchedules = new HashSet<TripSchedule>();
         }
     
         public int id_package { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public int id_hotel { get; set; }
+        public string id_hotel { get; set; }
         public int id_roomType { get; set; }
         public double totalPrice { get; set; }
         public int dayOfTrip { get; set; }
@@ -32,7 +32,7 @@ namespace Sahira_Hotel_Travel
         public virtual ICollection<BookingTrip> BookingTrips { get; set; }
         public virtual Hotel Hotel { get; set; }
         public virtual RoomType RoomType { get; set; }
-        public virtual ICollection<TripDestination> TripDestinations { get; set; }
+        public virtual ICollection<TripPackageDetail> TripPackageDetails { get; set; }
         public virtual ICollection<TripSchedule> TripSchedules { get; set; }
     }
 }

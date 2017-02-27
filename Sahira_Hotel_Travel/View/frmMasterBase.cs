@@ -33,23 +33,32 @@ namespace Sahira_Hotel_Travel.View
         {
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
+            checkMenu(menu);
+        }
+
+        private void checkMenu(string menu)
+        {
+            DataGridViewTextBoxColumn t1 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t2 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t3 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t4 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t5 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t6 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t7 = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn t8 = new DataGridViewTextBoxColumn();
 
             if (menu.Equals("admin"))
             {
                 this.Text = "User";
-                DataGridViewTextBoxColumn ID = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Username = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Nama = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Tipe = new DataGridViewTextBoxColumn();
-                ID.HeaderText = "ID";
-                Username.HeaderText = "Username";
-                Nama.HeaderText = "Nama";
-                Tipe.HeaderText = "Tipe";
+                t1.HeaderText = "ID";
+                t2.HeaderText = "Username";
+                t3.HeaderText = "Nama";
+                t4.HeaderText = "Tipe";
 
-                dataGridView1.Columns.Add(ID);
-                dataGridView1.Columns.Add(Username);
-                dataGridView1.Columns.Add(Nama);
-                dataGridView1.Columns.Add(Tipe);
+                dataGridView1.Columns.Add(t1);
+                dataGridView1.Columns.Add(t2);
+                dataGridView1.Columns.Add(t3);
+                dataGridView1.Columns.Add(t4);
 
                 getAdminData();
             }
@@ -57,33 +66,61 @@ namespace Sahira_Hotel_Travel.View
             if (menu.Equals("customer"))
             {
                 this.Text = "Customer";
-                DataGridViewTextBoxColumn Kode = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Nama = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Tipe = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Email = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Alamat = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Telp = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn DOB = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn WNI = new DataGridViewTextBoxColumn();
-                Kode.HeaderText = "Kode";
-                Nama.HeaderText = "Nama";
-                Tipe.HeaderText = "Tipe";
-                Email.HeaderText = "Email";
-                Alamat.HeaderText = "Alamat";
-                Telp.HeaderText = "No Telp";
-                DOB.HeaderText = "Tanggal Lahir";
-                WNI.HeaderText = "Warga Negara";
+                t1.HeaderText = "Kode";
+                t2.HeaderText = "Nama";
+                t3.HeaderText = "Tipe";
+                t4.HeaderText = "Email";
+                t5.HeaderText = "Alamat";
+                t6.HeaderText = "No Telp";
+                t7.HeaderText = "Tanggal Lahir";
+                t8.HeaderText = "Warga Negara";
 
-                dataGridView1.Columns.Add(Kode);
-                dataGridView1.Columns.Add(Nama);
-                dataGridView1.Columns.Add(Tipe);
-                dataGridView1.Columns.Add(Email);
-                dataGridView1.Columns.Add(Alamat);
-                dataGridView1.Columns.Add(Telp);
-                dataGridView1.Columns.Add(DOB);
-                dataGridView1.Columns.Add(WNI);
+                dataGridView1.Columns.Add(t1);
+                dataGridView1.Columns.Add(t2);
+                dataGridView1.Columns.Add(t3);
+                dataGridView1.Columns.Add(t4);
+                dataGridView1.Columns.Add(t5);
+                dataGridView1.Columns.Add(t6);
+                dataGridView1.Columns.Add(t7);
+                dataGridView1.Columns.Add(t8);
 
                 getCustomerData();
+            }
+
+            if (menu.Equals("hotel"))
+            {
+                this.Text = "Hotel";
+                t1.HeaderText = "Kode";
+                t2.HeaderText = "Nama";
+                t3.HeaderText = "Star";
+                t4.HeaderText = "No Telp";
+                t5.HeaderText = "Alamat";
+
+                dataGridView1.Columns.Add(t1);
+                dataGridView1.Columns.Add(t2);
+                dataGridView1.Columns.Add(t3);
+                dataGridView1.Columns.Add(t4);
+                dataGridView1.Columns.Add(t5);
+
+                getHotelData();
+            }
+
+            if (menu.Equals("destination"))
+            {
+                this.Text = "Trip Destination";
+                t1.HeaderText = "Kode";
+                t2.HeaderText = "Nama";
+                t3.HeaderText = "Star";
+                t4.HeaderText = "No Telp";
+                t5.HeaderText = "Alamat";
+
+                dataGridView1.Columns.Add(t1);
+                dataGridView1.Columns.Add(t2);
+                dataGridView1.Columns.Add(t3);
+                dataGridView1.Columns.Add(t4);
+                dataGridView1.Columns.Add(t5);
+
+                getTripDestination();
             }
         }
 
@@ -96,58 +133,7 @@ namespace Sahira_Hotel_Travel.View
             panel.ParentForm = this;
             panel.Dock = DockStyle.Fill;
             panel1.Controls.Add(panel);
-
-            if (menu.Equals("admin"))
-            {
-                this.Text = "User";
-                DataGridViewTextBoxColumn ID = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Username = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Nama = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Tipe = new DataGridViewTextBoxColumn();
-                ID.HeaderText = "ID";
-                Username.HeaderText = "Username";
-                Nama.HeaderText = "Nama";
-                Tipe.HeaderText = "Tipe";
-
-                dataGridView1.Columns.Add(ID);
-                dataGridView1.Columns.Add(Username);
-                dataGridView1.Columns.Add(Nama);
-                dataGridView1.Columns.Add(Tipe);
-
-                getAdminData();
-            }
-            
-            if (menu.Equals("customer"))
-            {
-                this.Text = "Customer";
-                DataGridViewTextBoxColumn Kode = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Nama = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Tipe = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Email = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Alamat = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn Telp = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn DOB = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn WNI = new DataGridViewTextBoxColumn();
-                Kode.HeaderText = "Kode";
-                Nama.HeaderText = "Nama";
-                Tipe.HeaderText = "Tipe";
-                Email.HeaderText = "Email";
-                Alamat.HeaderText = "Alamat";
-                Telp.HeaderText = "No Telp";
-                DOB.HeaderText = "Tanggal Lahir";
-                WNI.HeaderText = "Warga Negara";
-
-                dataGridView1.Columns.Add(Kode);
-                dataGridView1.Columns.Add(Nama);
-                dataGridView1.Columns.Add(Tipe);
-                dataGridView1.Columns.Add(Email);
-                dataGridView1.Columns.Add(Alamat);
-                dataGridView1.Columns.Add(Telp);
-                dataGridView1.Columns.Add(DOB);
-                dataGridView1.Columns.Add(WNI);
-
-                getCustomerData();
-            }
+            checkMenu(menu);
         }
 
         private void getAdminData()
@@ -185,6 +171,40 @@ namespace Sahira_Hotel_Travel.View
             }
         }
 
+        private void getHotelData()
+        {
+            var user = data.Hotels.Select(x => new
+            {
+                Kode = x.id_hotel,
+                Nama = x.name,
+                Star = x.star,
+                Telp = x.phone,
+                Alamat = x.address
+            });
+
+            foreach (var d in user)
+            {
+                dataGridView1.Rows.Add(d.Kode, d.Nama, d.Star, d.Telp, d.Alamat);
+            }
+        }
+
+        private void getTripDestination()
+        {
+            var user = data.TripDestinations.Select(x => new
+            {
+                Kode = x.id_trip,
+                Nama = x.name,
+                Kawasan = x.Region.name,
+                HargaLokal = x.localPrice,
+                HargaInter = x.internationalPrice
+            });
+
+            foreach (var d in user)
+            {
+                dataGridView1.Rows.Add(d.Kode, d.Nama, d.Kawasan, d.HargaLokal, d.HargaInter);
+            }
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             PANEL.ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -197,6 +217,16 @@ namespace Sahira_Hotel_Travel.View
             if (MENU.Equals("customer"))
             {
                 (PANEL as pnCustomer).populateForm();
+            }
+
+            if (MENU.Equals("hotel"))
+            {
+                (PANEL as pnHotel).populateForm();
+            }
+
+            if (MENU.Equals("destination"))
+            {
+                (PANEL as pnAreaWisata).populateForm();
             }
         }
     }

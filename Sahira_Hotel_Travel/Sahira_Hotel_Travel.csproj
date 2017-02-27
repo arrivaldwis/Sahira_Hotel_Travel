@@ -101,6 +101,9 @@
     <Compile Include="TripPackage.cs">
       <DependentUpon>sahira_hotel_travel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TripPackageDetail.cs">
+      <DependentUpon>sahira_hotel_travel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TripSchedule.cs">
       <DependentUpon>sahira_hotel_travel.tt</DependentUpon>
     </Compile>
@@ -110,11 +113,23 @@
     <Compile Include="User Control\pnAdmin.Designer.cs">
       <DependentUpon>pnAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\pnAreaWisata.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\pnAreaWisata.Designer.cs">
+      <DependentUpon>pnAreaWisata.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Control\pnCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="User Control\pnCustomer.Designer.cs">
       <DependentUpon>pnCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\pnHotel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\pnHotel.Designer.cs">
+      <DependentUpon>pnHotel.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\pnMaster.cs">
       <SubType>UserControl</SubType>
@@ -154,8 +169,14 @@
     <EmbeddedResource Include="User Control\pnAdmin.resx">
       <DependentUpon>pnAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Control\pnAreaWisata.resx">
+      <DependentUpon>pnAreaWisata.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Control\pnCustomer.resx">
       <DependentUpon>pnCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\pnHotel.resx">
+      <DependentUpon>pnHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

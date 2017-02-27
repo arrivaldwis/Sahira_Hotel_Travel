@@ -51,5 +51,25 @@ namespace Sahira_Hotel_Travel
                 }
             }
         }
+
+        private void hotelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnHotel hotel = new pnHotel();
+            frmMasterBase m = new frmMasterBase("hotel", hotel);
+            //DisposeAllButThis(m);
+            m.MdiParent = this;
+            m.WindowState = FormWindowState.Maximized;
+            m.Show();
+        }
+
+        private void areaWisataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnAreaWisata dest = new pnAreaWisata();
+            frmMasterBase m = new frmMasterBase("destination", dest);
+            //DisposeAllButThis(m);
+            m.MdiParent = this;
+            m.WindowState = FormWindowState.Maximized;
+            m.Show();
+        }
     }
 }

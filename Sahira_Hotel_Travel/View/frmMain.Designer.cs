@@ -83,28 +83,30 @@
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.userToolStripMenuItem.Text = "User";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customerToolStripMenuItem.Text = "Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // hotelToolStripMenuItem
             // 
             this.hotelToolStripMenuItem.Name = "hotelToolStripMenuItem";
-            this.hotelToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.hotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hotelToolStripMenuItem.Text = "Hotel";
+            this.hotelToolStripMenuItem.Click += new System.EventHandler(this.hotelToolStripMenuItem_Click);
             // 
             // areaWisataToolStripMenuItem
             // 
             this.areaWisataToolStripMenuItem.Name = "areaWisataToolStripMenuItem";
-            this.areaWisataToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.areaWisataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.areaWisataToolStripMenuItem.Text = "Area Wisata";
+            this.areaWisataToolStripMenuItem.Click += new System.EventHandler(this.areaWisataToolStripMenuItem_Click);
             // 
             // paketWisataToolStripMenuItem
             // 

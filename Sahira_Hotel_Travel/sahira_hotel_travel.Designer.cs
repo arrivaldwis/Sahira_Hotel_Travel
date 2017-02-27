@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model '\\mac\home\documents\visual studio 2013\Projects\Sahira_Hotel_Travel\Sahira_Hotel_Travel\sahira_hotel_travel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\sahira_hotel_travel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

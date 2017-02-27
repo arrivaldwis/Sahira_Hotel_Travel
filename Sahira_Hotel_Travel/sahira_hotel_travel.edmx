@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="sahira_hotel_travelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sahira_hotel_travelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BookingHotel">
           <Key>
             <PropertyRef Name="id_booking" />
           </Key>
           <Property Name="id_booking" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_customer" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="id_hotel" Type="int" Nullable="false" />
+          <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="id_roomType" Type="int" Nullable="false" />
           <Property Name="check_in_date" Type="datetime" Nullable="false" />
           <Property Name="check_out_date" Type="datetime" Nullable="false" />
@@ -24,7 +24,7 @@
           <Property Name="id_customer" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="id_package" Type="int" Nullable="false" />
           <Property Name="id_roomType" Type="int" Nullable="false" />
-          <Property Name="id_hotel" Type="int" Nullable="false" />
+          <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -51,17 +51,17 @@
             <PropertyRef Name="id_gallery" />
           </Key>
           <Property Name="id_gallery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_trip" Type="int" Nullable="false" />
+          <Property Name="id_trip" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="photo" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Hotel">
           <Key>
             <PropertyRef Name="id_hotel" />
           </Key>
-          <Property Name="id_hotel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="address" Type="text" Nullable="false" />
-          <Property Name="phone" Type="int" Nullable="false" />
+          <Property Name="phone" Type="bigint" Nullable="false" />
           <Property Name="star" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Region">
@@ -76,7 +76,7 @@
             <PropertyRef Name="id_roomType" />
           </Key>
           <Property Name="id_roomType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_hotel" Type="int" Nullable="false" />
+          <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="numOfRoom" Type="int" Nullable="false" />
           <Property Name="normalPrice" Type="float" Nullable="false" />
@@ -86,14 +86,13 @@
           <Key>
             <PropertyRef Name="id_trip" />
           </Key>
-          <Property Name="id_trip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_trip" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="address" Type="text" Nullable="false" />
           <Property Name="id_region" Type="int" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="localPrice" Type="float" Nullable="false" />
           <Property Name="internationalPrice" Type="float" />
-          <Property Name="id_package" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TripPackage">
           <Key>
@@ -102,10 +101,18 @@
           <Property Name="id_package" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
-          <Property Name="id_hotel" Type="int" Nullable="false" />
+          <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="id_roomType" Type="int" Nullable="false" />
           <Property Name="totalPrice" Type="float" Nullable="false" />
           <Property Name="dayOfTrip" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripPackageDetail">
+          <Key>
+            <PropertyRef Name="id_package_detail" />
+          </Key>
+          <Property Name="id_package_detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_package" Type="int" Nullable="false" />
+          <Property Name="id_trip" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="TripSchedule">
           <Key>
@@ -267,18 +274,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TripDestination_TripPackage">
-          <End Role="TripPackage" Type="Self.TripPackage" Multiplicity="1" />
-          <End Role="TripDestination" Type="Self.TripDestination" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TripPackage">
-              <PropertyRef Name="id_package" />
-            </Principal>
-            <Dependent Role="TripDestination">
-              <PropertyRef Name="id_package" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TripPackage_Hotel">
           <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
           <End Role="TripPackage" Type="Self.TripPackage" Multiplicity="*" />
@@ -300,6 +295,30 @@
             </Principal>
             <Dependent Role="TripPackage">
               <PropertyRef Name="id_roomType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripPackageDetail_TripDestination">
+          <End Role="TripDestination" Type="Self.TripDestination" Multiplicity="1" />
+          <End Role="TripPackageDetail" Type="Self.TripPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripDestination">
+              <PropertyRef Name="id_trip" />
+            </Principal>
+            <Dependent Role="TripPackageDetail">
+              <PropertyRef Name="id_trip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripPackageDetail_TripPackage">
+          <End Role="TripPackage" Type="Self.TripPackage" Multiplicity="1" />
+          <End Role="TripPackageDetail" Type="Self.TripPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPackage">
+              <PropertyRef Name="id_package" />
+            </Principal>
+            <Dependent Role="TripPackageDetail">
+              <PropertyRef Name="id_package" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -338,6 +357,7 @@
           <EntitySet Name="RoomType" EntityType="Self.RoomType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TripDestination" EntityType="Self.TripDestination" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TripPackage" EntityType="Self.TripPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripPackageDetail" EntityType="Self.TripPackageDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TripSchedule" EntityType="Self.TripSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
@@ -385,10 +405,6 @@
             <End Role="Region" EntitySet="Region" />
             <End Role="TripDestination" EntitySet="TripDestination" />
           </AssociationSet>
-          <AssociationSet Name="FK_TripDestination_TripPackage" Association="Self.FK_TripDestination_TripPackage">
-            <End Role="TripPackage" EntitySet="TripPackage" />
-            <End Role="TripDestination" EntitySet="TripDestination" />
-          </AssociationSet>
           <AssociationSet Name="FK_TripPackage_Hotel" Association="Self.FK_TripPackage_Hotel">
             <End Role="Hotel" EntitySet="Hotel" />
             <End Role="TripPackage" EntitySet="TripPackage" />
@@ -396,6 +412,14 @@
           <AssociationSet Name="FK_TripPackage_RoomType" Association="Self.FK_TripPackage_RoomType">
             <End Role="RoomType" EntitySet="RoomType" />
             <End Role="TripPackage" EntitySet="TripPackage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripPackageDetail_TripDestination" Association="Self.FK_TripPackageDetail_TripDestination">
+            <End Role="TripDestination" EntitySet="TripDestination" />
+            <End Role="TripPackageDetail" EntitySet="TripPackageDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripPackageDetail_TripPackage" Association="Self.FK_TripPackageDetail_TripPackage">
+            <End Role="TripPackage" EntitySet="TripPackage" />
+            <End Role="TripPackageDetail" EntitySet="TripPackageDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_TripSchedule_TripPackage" Association="Self.FK_TripSchedule_TripPackage">
             <End Role="TripPackage" EntitySet="TripPackage" />
@@ -421,6 +445,7 @@
           <EntitySet Name="RoomTypes" EntityType="sahira_hotel_travelModel.RoomType" />
           <EntitySet Name="TripDestinations" EntityType="sahira_hotel_travelModel.TripDestination" />
           <EntitySet Name="TripPackages" EntityType="sahira_hotel_travelModel.TripPackage" />
+          <EntitySet Name="TripPackageDetails" EntityType="sahira_hotel_travelModel.TripPackageDetail" />
           <EntitySet Name="TripSchedules" EntityType="sahira_hotel_travelModel.TripSchedule" />
           <EntitySet Name="Users" EntityType="sahira_hotel_travelModel.User" />
           <EntitySet Name="UserTypes" EntityType="sahira_hotel_travelModel.UserType" />
@@ -476,9 +501,13 @@
             <End Role="RoomType" EntitySet="RoomTypes" />
             <End Role="TripPackage" EntitySet="TripPackages" />
           </AssociationSet>
-          <AssociationSet Name="FK_TripDestination_TripPackage" Association="sahira_hotel_travelModel.FK_TripDestination_TripPackage">
-            <End Role="TripPackage" EntitySet="TripPackages" />
+          <AssociationSet Name="FK_TripPackageDetail_TripDestination" Association="sahira_hotel_travelModel.FK_TripPackageDetail_TripDestination">
             <End Role="TripDestination" EntitySet="TripDestinations" />
+            <End Role="TripPackageDetail" EntitySet="TripPackageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripPackageDetail_TripPackage" Association="sahira_hotel_travelModel.FK_TripPackageDetail_TripPackage">
+            <End Role="TripPackage" EntitySet="TripPackages" />
+            <End Role="TripPackageDetail" EntitySet="TripPackageDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_TripSchedule_TripPackage" Association="sahira_hotel_travelModel.FK_TripSchedule_TripPackage">
             <End Role="TripPackage" EntitySet="TripPackages" />
@@ -495,7 +524,7 @@
           </Key>
           <Property Name="id_booking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="id_hotel" Type="Int32" Nullable="false" />
+          <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="id_roomType" Type="Int32" Nullable="false" />
           <Property Name="check_in_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="check_out_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -511,7 +540,7 @@
           <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="id_package" Type="Int32" Nullable="false" />
           <Property Name="id_roomType" Type="Int32" Nullable="false" />
-          <Property Name="id_hotel" Type="Int32" Nullable="false" />
+          <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Customer" FromRole="BookingTrip" ToRole="Customer" />
           <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Hotel" FromRole="BookingTrip" ToRole="Hotel" />
           <NavigationProperty Name="RoomType" Relationship="sahira_hotel_travelModel.FK_BookingTrip_RoomType" FromRole="BookingTrip" ToRole="RoomType" />
@@ -546,7 +575,7 @@
             <PropertyRef Name="id_gallery" />
           </Key>
           <Property Name="id_gallery" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_trip" Type="Int32" Nullable="false" />
+          <Property Name="id_trip" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="photo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TripDestination" Relationship="sahira_hotel_travelModel.FK_Gallery_TripDestination" FromRole="Gallery" ToRole="TripDestination" />
         </EntityType>
@@ -554,10 +583,10 @@
           <Key>
             <PropertyRef Name="id_hotel" />
           </Key>
-          <Property Name="id_hotel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="Int64" Nullable="false" />
           <Property Name="star" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BookingHotels" Relationship="sahira_hotel_travelModel.FK_BookingHotel_Hotel" FromRole="Hotel" ToRole="BookingHotel" />
           <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Hotel" FromRole="Hotel" ToRole="BookingTrip" />
@@ -577,7 +606,7 @@
             <PropertyRef Name="id_roomType" />
           </Key>
           <Property Name="id_roomType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_hotel" Type="Int32" Nullable="false" />
+          <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="numOfRoom" Type="Int32" Nullable="false" />
           <Property Name="normalPrice" Type="Double" Nullable="false" />
@@ -591,17 +620,16 @@
           <Key>
             <PropertyRef Name="id_trip" />
           </Key>
-          <Property Name="id_trip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_trip" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="id_region" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="localPrice" Type="Double" Nullable="false" />
           <Property Name="internationalPrice" Type="Double" />
-          <Property Name="id_package" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Galleries" Relationship="sahira_hotel_travelModel.FK_Gallery_TripDestination" FromRole="TripDestination" ToRole="Gallery" />
           <NavigationProperty Name="Region" Relationship="sahira_hotel_travelModel.FK_TripDestination_Region" FromRole="TripDestination" ToRole="Region" />
-          <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_TripDestination_TripPackage" FromRole="TripDestination" ToRole="TripPackage" />
+          <NavigationProperty Name="TripPackageDetails" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripDestination" FromRole="TripDestination" ToRole="TripPackageDetail" />
         </EntityType>
         <EntityType Name="TripPackage">
           <Key>
@@ -610,15 +638,25 @@
           <Property Name="id_package" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="id_hotel" Type="Int32" Nullable="false" />
+          <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="id_roomType" Type="Int32" Nullable="false" />
           <Property Name="totalPrice" Type="Double" Nullable="false" />
           <Property Name="dayOfTrip" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_TripPackage" FromRole="TripPackage" ToRole="BookingTrip" />
           <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_TripPackage_Hotel" FromRole="TripPackage" ToRole="Hotel" />
           <NavigationProperty Name="RoomType" Relationship="sahira_hotel_travelModel.FK_TripPackage_RoomType" FromRole="TripPackage" ToRole="RoomType" />
-          <NavigationProperty Name="TripDestinations" Relationship="sahira_hotel_travelModel.FK_TripDestination_TripPackage" FromRole="TripPackage" ToRole="TripDestination" />
+          <NavigationProperty Name="TripPackageDetails" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripPackage" FromRole="TripPackage" ToRole="TripPackageDetail" />
           <NavigationProperty Name="TripSchedules" Relationship="sahira_hotel_travelModel.FK_TripSchedule_TripPackage" FromRole="TripPackage" ToRole="TripSchedule" />
+        </EntityType>
+        <EntityType Name="TripPackageDetail">
+          <Key>
+            <PropertyRef Name="id_package_detail" />
+          </Key>
+          <Property Name="id_package_detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_package" Type="Int32" Nullable="false" />
+          <Property Name="id_trip" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TripDestination" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripDestination" FromRole="TripPackageDetail" ToRole="TripDestination" />
+          <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripPackage" FromRole="TripPackageDetail" ToRole="TripPackage" />
         </EntityType>
         <EntityType Name="TripSchedule">
           <Key>
@@ -807,14 +845,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TripDestination_TripPackage">
+        <Association Name="FK_TripPackageDetail_TripDestination">
+          <End Type="sahira_hotel_travelModel.TripDestination" Role="TripDestination" Multiplicity="1" />
+          <End Type="sahira_hotel_travelModel.TripPackageDetail" Role="TripPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripDestination">
+              <PropertyRef Name="id_trip" />
+            </Principal>
+            <Dependent Role="TripPackageDetail">
+              <PropertyRef Name="id_trip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripPackageDetail_TripPackage">
           <End Type="sahira_hotel_travelModel.TripPackage" Role="TripPackage" Multiplicity="1" />
-          <End Type="sahira_hotel_travelModel.TripDestination" Role="TripDestination" Multiplicity="*" />
+          <End Type="sahira_hotel_travelModel.TripPackageDetail" Role="TripPackageDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TripPackage">
               <PropertyRef Name="id_package" />
             </Principal>
-            <Dependent Role="TripDestination">
+            <Dependent Role="TripPackageDetail">
               <PropertyRef Name="id_package" />
             </Dependent>
           </ReferentialConstraint>
@@ -937,7 +987,6 @@
           <EntitySetMapping Name="TripDestinations">
             <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripDestination">
               <MappingFragment StoreEntitySet="TripDestination">
-                <ScalarProperty Name="id_package" ColumnName="id_package" />
                 <ScalarProperty Name="internationalPrice" ColumnName="internationalPrice" />
                 <ScalarProperty Name="localPrice" ColumnName="localPrice" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -958,6 +1007,15 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id_package" ColumnName="id_package" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripPackageDetails">
+            <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripPackageDetail">
+              <MappingFragment StoreEntitySet="TripPackageDetail">
+                <ScalarProperty Name="id_trip" ColumnName="id_trip" />
+                <ScalarProperty Name="id_package" ColumnName="id_package" />
+                <ScalarProperty Name="id_package_detail" ColumnName="id_package_detail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

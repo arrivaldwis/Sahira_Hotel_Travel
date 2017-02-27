@@ -23,56 +23,58 @@ namespace Sahira_Hotel_Travel.User_Control
 
         public void add()
         {
-            validateAll();
-
-            User user = new User();
-            user.username = textBox1.Text;
-            user.password = textBox2.Text;
-            user.name = textBox4.Text;
-            user.id_userType = getTypeId(comboBox1.Text);
-
-            try
+            if (validateAll())
             {
-                data.Users.Add(user);
-                data.SaveChanges();
-                helpers.showInfo("New user has been added!");
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                User user = new User();
+                user.username = textBox1.Text;
+                user.password = textBox2.Text;
+                user.name = textBox4.Text;
+                user.id_userType = getTypeId(comboBox1.Text);
+
+                try
                 {
-                    helpers.showError("Sorry, can't add duplicate user data!");
+                    data.Users.Add(user);
+                    data.SaveChanges();
+                    helpers.showInfo("New user has been added!");
                 }
-                else
+                catch (SqlException ex)
                 {
-                    helpers.showError(ex.Message);
+                    if (ex.Number == 2627)
+                    {
+                        helpers.showError("Sorry, can't add duplicate user data!");
+                    }
+                    else
+                    {
+                        helpers.showError(ex.Message);
+                    }
                 }
             }
         }
 
         public void edit(string id)
         {
-            validateAll();
-
-            var user = data.Users.Find(int.Parse(id));
-            user.password = textBox2.Text;
-            user.name = textBox4.Text;
-            user.id_userType = getTypeId(comboBox1.Text);
-
-            try
+            if (validateAll())
             {
-                data.SaveChanges();
-                helpers.showInfo("user has been updated!");
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                var user = data.Users.Find(int.Parse(id));
+                user.password = textBox2.Text;
+                user.name = textBox4.Text;
+                user.id_userType = getTypeId(comboBox1.Text);
+
+                try
                 {
-                    helpers.showError("Sorry, can't add duplicate user data!");
+                    data.SaveChanges();
+                    helpers.showInfo("user has been updated!");
                 }
-                else
+                catch (SqlException ex)
                 {
-                    helpers.showError(ex.Message);
+                    if (ex.Number == 2627)
+                    {
+                        helpers.showError("Sorry, can't add duplicate user data!");
+                    }
+                    else
+                    {
+                        helpers.showError(ex.Message);
+                    }
                 }
             }
         }
@@ -93,37 +95,39 @@ namespace Sahira_Hotel_Travel.User_Control
             }
         }
 
-        private void validateAll()
+        private bool validateAll()
         {
-            if (isFieldStillEmpty())
+            bool validAll = true;
+            if (textBox1.Text.Equals(""))
             {
                 helpers.showExclamation("Please complete the form first!");
-                return;
+                validAll = false;
             }
 
             if (!validation.isPasswordLenghtGreaterEqualThan6(textBox2.Text))
             {
                 helpers.showExclamation("Password minimum 6 character");
-                return;
+                validAll = false;
             }
 
             if (!validation.isNameLengthGreaterEqualThan3(textBox4.Text))
             {
                 helpers.showExclamation("Name minimum 3 character");
-                return;
+                validAll = false;
             }
 
             if (!validation.isValidPassword(textBox2.Text))
             {
                 helpers.showExclamation("Password should be contain number and letter");
-                return;
+                validAll = false;
             }
 
             if (!validation.isPasswordMatch(textBox2.Text, textBox3.Text))
             {
                 helpers.showExclamation("Password not match!");
-                return;
+                validAll = false;
             }
+            return validAll;
         }
 
         public bool isFieldStillEmpty()

@@ -22,7 +22,7 @@ namespace Sahira_Hotel_Travel
         }
     
         public int id_roomType { get; set; }
-        public int id_hotel { get; set; }
+        public string id_hotel { get; set; }
         public string name { get; set; }
         public int numOfRoom { get; set; }
         public double normalPrice { get; set; }

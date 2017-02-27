@@ -89,7 +89,6 @@
     <EntitySetMapping Name="TripDestinations">
       <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripDestination">
         <MappingFragment StoreEntitySet="TripDestination">
-          <ScalarProperty Name="id_package" ColumnName="id_package" />
           <ScalarProperty Name="internationalPrice" ColumnName="internationalPrice" />
           <ScalarProperty Name="localPrice" ColumnName="localPrice" />
           <ScalarProperty Name="description" ColumnName="description" />
@@ -110,6 +109,15 @@
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id_package" ColumnName="id_package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TripPackageDetails">
+      <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripPackageDetail">
+        <MappingFragment StoreEntitySet="TripPackageDetail">
+          <ScalarProperty Name="id_trip" ColumnName="id_trip" />
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+          <ScalarProperty Name="id_package_detail" ColumnName="id_package_detail" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

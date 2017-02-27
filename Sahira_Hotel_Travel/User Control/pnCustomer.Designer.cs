@@ -52,11 +52,6 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // frmMaster
-            // 
-            this.frmMaster.ClientSize = new System.Drawing.Size(1280, 747);
-            this.frmMaster.Location = new System.Drawing.Point(-8, -8);
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

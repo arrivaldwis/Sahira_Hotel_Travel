@@ -40,9 +40,8 @@ namespace Sahira_Hotel_Travel.Helper
             return yes;
         }
 
-        public string generateCustomerCode()
+        public string generateCustomerCode(string code)
         {
-            string code = "M";
             Random rand = new Random();
             for (int i = 0; i < 4; i++ )
                 code += "" + rand.Next(0, 9);
@@ -85,6 +84,13 @@ namespace Sahira_Hotel_Travel.Helper
             bool yes = false;
             if (password.Length >= 6) yes = true;
             return yes;
+        }
+
+        public bool isPhoneLenghtValid(string phone)
+        {
+            bool valid = false;
+            if (phone.Length >= 10 && phone.Length <= 13) valid = true;
+            return valid;
         }
 
         public bool isPhoneValid(string phone)

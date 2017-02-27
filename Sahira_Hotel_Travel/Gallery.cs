@@ -15,7 +15,7 @@ namespace Sahira_Hotel_Travel
     public partial class Gallery
     {
         public int id_gallery { get; set; }
-        public int id_trip { get; set; }
+        public string id_trip { get; set; }
         public string photo { get; set; }
     
         public virtual TripDestination TripDestination { get; set; }

@@ -23,64 +23,66 @@ namespace Sahira_Hotel_Travel.User_Control
 
         public void add()
         {
-            validateAll();
-
-            Customer user = new Customer();
-            user.id_customer = textBox1.Text;
-            user.name = textBox2.Text;
-            user.address = textBox3.Text;
-            user.email = textBox4.Text;
-            user.phone = textBox5.Text;
-            user.dob = dateTimePicker1.Value;
-            user.nationality = radioButton1.Checked == true?"WNI":"Non-WNI";
-            user.id_customerType = getTypeId(comboBox1.Text);
-
-            try
+            if (validateAll())
             {
-                data.Customers.Add(user);
-                data.SaveChanges();
-                helpers.showInfo("New customer has been added!");
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                Customer user = new Customer();
+                user.id_customer = textBox1.Text;
+                user.name = textBox2.Text;
+                user.address = textBox3.Text;
+                user.email = textBox4.Text;
+                user.phone = textBox5.Text;
+                user.dob = dateTimePicker1.Value;
+                user.nationality = radioButton1.Checked == true ? "WNI" : "Non-WNI";
+                user.id_customerType = getTypeId(comboBox1.Text);
+
+                try
                 {
-                    helpers.showError("Sorry, can't add duplicate customer data!");
+                    data.Customers.Add(user);
+                    data.SaveChanges();
+                    helpers.showInfo("New customer has been added!");
                 }
-                else
+                catch (SqlException ex)
                 {
-                    helpers.showError(ex.Message);
+                    if (ex.Number == 2627)
+                    {
+                        helpers.showError("Sorry, can't add duplicate customer data!");
+                    }
+                    else
+                    {
+                        helpers.showError(ex.Message);
+                    }
                 }
             }
         }
 
         public void edit(string id)
         {
-            validateAll();
-
-            var cust = data.Customers.Find(id);
-            cust.name = textBox2.Text;
-            cust.address = textBox3.Text;
-            cust.email = textBox4.Text;
-            cust.phone = textBox5.Text;
-            cust.dob = dateTimePicker1.Value;
-            cust.nationality = radioButton1.Checked == true ? "WNI" : "Non-WNI";
-            cust.id_customerType = getTypeId(comboBox1.Text);
-
-            try
+            if (validateAll())
             {
-                data.SaveChanges();
-                helpers.showInfo("New customer has been updated!");
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                var cust = data.Customers.Find(id);
+                cust.name = textBox2.Text;
+                cust.address = textBox3.Text;
+                cust.email = textBox4.Text;
+                cust.phone = textBox5.Text;
+                cust.dob = dateTimePicker1.Value;
+                cust.nationality = radioButton1.Checked == true ? "WNI" : "Non-WNI";
+                cust.id_customerType = getTypeId(comboBox1.Text);
+
+                try
                 {
-                    helpers.showError("Sorry, can't add duplicate customer data!");
+                    data.SaveChanges();
+                    helpers.showInfo("New customer has been updated!");
                 }
-                else
+                catch (SqlException ex)
                 {
-                    helpers.showError(ex.Message);
+                    if (ex.Number == 2627)
+                    {
+                        helpers.showError("Sorry, can't add duplicate customer data!");
+                    }
+                    else
+                    {
+                        helpers.showError(ex.Message);
+                    }
                 }
             }
         }
@@ -101,39 +103,6 @@ namespace Sahira_Hotel_Travel.User_Control
             }
         }
 
-        private void validateAll()
-        {
-            if (isFieldStillEmpty())
-            {
-                helpers.showExclamation("Please complete the form first!");
-                return;
-            }
-
-            if (!validation.isNameLengthGreaterEqualThan3(textBox2.Text))
-            {
-                helpers.showExclamation("Name minimum 3 character");
-                return;
-            }
-
-            if (!validation.isEmailValid(textBox4.Text))
-            {
-                helpers.showExclamation("Email not valid!");
-                return;
-            }
-
-            if (!validation.isAddressLenghtGreaterEqualThan6(textBox3.Text))
-            {
-                helpers.showExclamation("Address minimum 6 character");
-                return;
-            }
-
-            if (!validation.isPhoneValid(textBox5.Text))
-            {
-                helpers.showExclamation("Phone only contain number");
-                return;
-            }
-        }
-
         public void populateForm()
         {
             var cust = data.Customers.Find(dataId);
@@ -148,6 +117,41 @@ namespace Sahira_Hotel_Travel.User_Control
             else radioButton2.Checked = true;
         }
 
+        private bool validateAll()
+        {
+            bool validAll = true;
+            if (textBox1.Text.Equals(""))
+            {
+                helpers.showExclamation("Please complete the form first!");
+                validAll = false;
+            }
+
+            if (!validation.isNameLengthGreaterEqualThan3(textBox2.Text))
+            {
+                helpers.showExclamation("Name minimum 3 character");
+                validAll = false;
+            }
+
+            if (!validation.isEmailValid(textBox4.Text))
+            {
+                helpers.showExclamation("Email not valid!");
+                validAll = false;
+            }
+
+            if (!validation.isAddressLenghtGreaterEqualThan6(textBox3.Text))
+            {
+                helpers.showExclamation("Address minimum 6 character");
+                validAll = false;
+            }
+
+            if (!validation.isPhoneValid(textBox5.Text))
+            {
+                helpers.showExclamation("Phone only contain number");
+                validAll = false;
+            }
+            return validAll;
+        }
+
         public bool isFieldStillEmpty()
         {
             bool yes = false;
@@ -157,7 +161,7 @@ namespace Sahira_Hotel_Travel.User_Control
 
         public void loadData()
         {
-            textBox1.Text = validation.generateCustomerCode();
+            textBox1.Text = validation.generateCustomerCode("M");
             foreach (var custType in this.data.CustomerTypes)
             {
                 comboBox1.Items.Add(custType.type);

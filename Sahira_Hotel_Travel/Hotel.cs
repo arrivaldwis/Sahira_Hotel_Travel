@@ -22,10 +22,10 @@ namespace Sahira_Hotel_Travel
             this.TripPackages = new HashSet<TripPackage>();
         }
     
-        public int id_hotel { get; set; }
+        public string id_hotel { get; set; }
         public string name { get; set; }
         public string address { get; set; }
-        public int phone { get; set; }
+        public long phone { get; set; }
         public int star { get; set; }
     
         public virtual ICollection<BookingHotel> BookingHotels { get; set; }

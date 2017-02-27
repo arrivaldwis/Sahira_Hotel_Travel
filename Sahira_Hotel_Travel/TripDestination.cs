@@ -17,19 +17,19 @@ namespace Sahira_Hotel_Travel
         public TripDestination()
         {
             this.Galleries = new HashSet<Gallery>();
+            this.TripPackageDetails = new HashSet<TripPackageDetail>();
         }
     
-        public int id_trip { get; set; }
+        public string id_trip { get; set; }
         public string name { get; set; }
         public string address { get; set; }
         public int id_region { get; set; }
         public string description { get; set; }
         public double localPrice { get; set; }
         public Nullable<double> internationalPrice { get; set; }
-        public int id_package { get; set; }
     
         public virtual ICollection<Gallery> Galleries { get; set; }
         public virtual Region Region { get; set; }
-        public virtual TripPackage TripPackage { get; set; }
+        public virtual ICollection<TripPackageDetail> TripPackageDetails { get; set; }
     }
 }
