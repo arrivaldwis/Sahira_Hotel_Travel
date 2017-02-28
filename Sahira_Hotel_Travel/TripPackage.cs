@@ -21,12 +21,13 @@ namespace Sahira_Hotel_Travel
             this.TripSchedules = new HashSet<TripSchedule>();
         }
     
-        public int id_package { get; set; }
+        public string id_package { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public string id_hotel { get; set; }
         public int id_roomType { get; set; }
-        public double totalPrice { get; set; }
+        public double totalPrice_local { get; set; }
+        public double totalPrice_international { get; set; }
         public int dayOfTrip { get; set; }
     
         public virtual ICollection<BookingTrip> BookingTrips { get; set; }

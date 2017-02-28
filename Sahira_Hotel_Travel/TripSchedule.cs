@@ -15,7 +15,7 @@ namespace Sahira_Hotel_Travel
     public partial class TripSchedule
     {
         public int id_schedule { get; set; }
-        public int id_package { get; set; }
+        public string id_package { get; set; }
         public string pic { get; set; }
         public string tour_guide { get; set; }
         public string driver { get; set; }

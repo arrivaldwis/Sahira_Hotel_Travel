@@ -60,11 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // frmMaster
-            // 
-            this.frmMaster.ClientSize = new System.Drawing.Size(1366, 716);
-            this.frmMaster.Location = new System.Drawing.Point(-8, -8);
-            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));

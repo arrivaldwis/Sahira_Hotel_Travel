@@ -26,7 +26,7 @@ namespace Sahira_Hotel_Travel
         public string name { get; set; }
         public int numOfRoom { get; set; }
         public double normalPrice { get; set; }
-        public Nullable<double> packagePrice { get; set; }
+        public double packagePrice { get; set; }
     
         public virtual ICollection<BookingHotel> BookingHotels { get; set; }
         public virtual ICollection<BookingTrip> BookingTrips { get; set; }

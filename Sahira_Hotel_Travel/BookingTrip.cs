@@ -16,7 +16,7 @@ namespace Sahira_Hotel_Travel
     {
         public int id_booking_trip { get; set; }
         public string id_customer { get; set; }
-        public int id_package { get; set; }
+        public string id_package { get; set; }
         public int id_roomType { get; set; }
         public string id_hotel { get; set; }
     

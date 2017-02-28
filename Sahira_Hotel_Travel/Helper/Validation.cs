@@ -96,7 +96,16 @@ namespace Sahira_Hotel_Travel.Helper
         public bool isPhoneValid(string phone)
         {
             bool valid = false;
-            if (!phone.Any(x => char.IsLetter(x))) valid = true;
+            if (!phone.Any(x => char.IsLetter(x)) && !phone.Any(x=>char.IsSymbol(x))) valid = true;
+            return valid;
+        }
+
+        public bool isDurationValid(string duration) {
+            bool valid = false;
+            if (isPhoneValid(duration))
+            {
+                if (int.Parse(duration) >= 3 && int.Parse(duration) <= 5) valid = true;
+            }
             return valid;
         }
     }

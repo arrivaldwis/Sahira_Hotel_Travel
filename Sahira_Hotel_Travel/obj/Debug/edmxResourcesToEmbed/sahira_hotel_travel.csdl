@@ -104,7 +104,7 @@
     </Key>
     <Property Name="id_booking_trip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_customer" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <Property Name="id_package" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="id_roomType" Type="Int32" Nullable="false" />
     <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Customer" Relationship="sahira_hotel_travelModel.FK_BookingTrip_Customer" FromRole="BookingTrip" ToRole="Customer" />
@@ -176,7 +176,7 @@
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="numOfRoom" Type="Int32" Nullable="false" />
     <Property Name="normalPrice" Type="Double" Nullable="false" />
-    <Property Name="packagePrice" Type="Double" />
+    <Property Name="packagePrice" Type="Double" Nullable="false" />
     <NavigationProperty Name="BookingHotels" Relationship="sahira_hotel_travelModel.FK_BookingHotel_RoomType" FromRole="RoomType" ToRole="BookingHotel" />
     <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_RoomType" FromRole="RoomType" ToRole="BookingTrip" />
     <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_RoomType_Hotel" FromRole="RoomType" ToRole="Hotel" />
@@ -201,12 +201,13 @@
     <Key>
       <PropertyRef Name="id_package" />
     </Key>
-    <Property Name="id_package" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_package" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="id_hotel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="id_roomType" Type="Int32" Nullable="false" />
-    <Property Name="totalPrice" Type="Double" Nullable="false" />
+    <Property Name="totalPrice_local" Type="Double" Nullable="false" />
+    <Property Name="totalPrice_international" Type="Double" Nullable="false" />
     <Property Name="dayOfTrip" Type="Int32" Nullable="false" />
     <NavigationProperty Name="BookingTrips" Relationship="sahira_hotel_travelModel.FK_BookingTrip_TripPackage" FromRole="TripPackage" ToRole="BookingTrip" />
     <NavigationProperty Name="Hotel" Relationship="sahira_hotel_travelModel.FK_TripPackage_Hotel" FromRole="TripPackage" ToRole="Hotel" />
@@ -219,7 +220,7 @@
       <PropertyRef Name="id_package_detail" />
     </Key>
     <Property Name="id_package_detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <Property Name="id_package" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="id_trip" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="TripDestination" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripDestination" FromRole="TripPackageDetail" ToRole="TripDestination" />
     <NavigationProperty Name="TripPackage" Relationship="sahira_hotel_travelModel.FK_TripPackageDetail_TripPackage" FromRole="TripPackageDetail" ToRole="TripPackage" />
@@ -229,7 +230,7 @@
       <PropertyRef Name="id_schedule" />
     </Key>
     <Property Name="id_schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <Property Name="id_package" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="pic" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="tour_guide" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="driver" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />

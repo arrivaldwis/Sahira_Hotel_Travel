@@ -103,7 +103,8 @@
       <EntityTypeMapping TypeName="sahira_hotel_travelModel.TripPackage">
         <MappingFragment StoreEntitySet="TripPackage">
           <ScalarProperty Name="dayOfTrip" ColumnName="dayOfTrip" />
-          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="totalPrice_international" ColumnName="totalPrice_international" />
+          <ScalarProperty Name="totalPrice_local" ColumnName="totalPrice_local" />
           <ScalarProperty Name="id_roomType" ColumnName="id_roomType" />
           <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
           <ScalarProperty Name="description" ColumnName="description" />

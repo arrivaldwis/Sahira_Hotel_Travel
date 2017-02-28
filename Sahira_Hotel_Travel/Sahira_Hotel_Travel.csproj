@@ -137,6 +137,12 @@
     <Compile Include="User Control\pnMaster.Designer.cs">
       <DependentUpon>pnMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\pnPackageList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\pnPackageList.Designer.cs">
+      <DependentUpon>pnPackageList.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>sahira_hotel_travel.tt</DependentUpon>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\pnHotel.resx">
       <DependentUpon>pnHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\pnPackageList.resx">
+      <DependentUpon>pnPackageList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -15,7 +15,7 @@ namespace Sahira_Hotel_Travel
     public partial class TripPackageDetail
     {
         public int id_package_detail { get; set; }
-        public int id_package { get; set; }
+        public string id_package { get; set; }
         public string id_trip { get; set; }
     
         public virtual TripDestination TripDestination { get; set; }

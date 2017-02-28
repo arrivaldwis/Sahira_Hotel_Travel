@@ -31,3 +31,4 @@ D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahir
 D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.csproj.GenerateResource.Cache
 D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnHotel.resources
 D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnAreaWisata.resources
+D:\Arrival\Practices\WSC\Sahira_Hotel_Travel\Sahira_Hotel_Travel\obj\Debug\Sahira_Hotel_Travel.User_Control.pnPackageList.resources

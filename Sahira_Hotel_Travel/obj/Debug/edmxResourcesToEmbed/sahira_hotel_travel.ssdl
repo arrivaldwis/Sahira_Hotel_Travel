@@ -17,7 +17,7 @@
     </Key>
     <Property Name="id_booking_trip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_customer" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="id_package" Type="int" Nullable="false" />
+    <Property Name="id_package" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="id_roomType" Type="int" Nullable="false" />
     <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
@@ -75,7 +75,7 @@
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="numOfRoom" Type="int" Nullable="false" />
     <Property Name="normalPrice" Type="float" Nullable="false" />
-    <Property Name="packagePrice" Type="float" />
+    <Property Name="packagePrice" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="TripDestination">
     <Key>
@@ -93,12 +93,13 @@
     <Key>
       <PropertyRef Name="id_package" />
     </Key>
-    <Property Name="id_package" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_package" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="description" Type="text" Nullable="false" />
     <Property Name="id_hotel" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="id_roomType" Type="int" Nullable="false" />
-    <Property Name="totalPrice" Type="float" Nullable="false" />
+    <Property Name="totalPrice_local" Type="float" Nullable="false" />
+    <Property Name="totalPrice_international" Type="float" Nullable="false" />
     <Property Name="dayOfTrip" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TripPackageDetail">
@@ -106,7 +107,7 @@
       <PropertyRef Name="id_package_detail" />
     </Key>
     <Property Name="id_package_detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_package" Type="int" Nullable="false" />
+    <Property Name="id_package" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="id_trip" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <EntityType Name="TripSchedule">
@@ -114,7 +115,7 @@
       <PropertyRef Name="id_schedule" />
     </Key>
     <Property Name="id_schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_package" Type="int" Nullable="false" />
+    <Property Name="id_package" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="pic" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="tour_guide" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="driver" Type="varchar" MaxLength="100" Nullable="false" />

@@ -71,5 +71,15 @@ namespace Sahira_Hotel_Travel
             m.WindowState = FormWindowState.Maximized;
             m.Show();
         }
+
+        private void listPaketWisataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnPackageList dest = new pnPackageList();
+            frmMasterBase m = new frmMasterBase("package_list", dest);
+            //DisposeAllButThis(m);
+            m.MdiParent = this;
+            m.WindowState = FormWindowState.Maximized;
+            m.Show();
+        }
     }
 }

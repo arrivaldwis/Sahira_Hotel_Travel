@@ -122,6 +122,26 @@ namespace Sahira_Hotel_Travel.View
 
                 getTripDestination();
             }
+
+            if (menu.Equals("package_list"))
+            {
+                this.Text = "Package List";
+                t1.HeaderText = "Kode";
+                t2.HeaderText = "Nama";
+                t3.HeaderText = "Hotel";
+                t4.HeaderText = "Durasi";
+                t5.HeaderText = "Harga Lokal";
+                t6.HeaderText = "Harga Internasional";
+
+                dataGridView1.Columns.Add(t1);
+                dataGridView1.Columns.Add(t2);
+                dataGridView1.Columns.Add(t3);
+                dataGridView1.Columns.Add(t4);
+                dataGridView1.Columns.Add(t5);
+                dataGridView1.Columns.Add(t6);
+
+                getPackageList();
+            }
         }
 
         public void loadData(string menu, pnMaster panel)
@@ -205,6 +225,24 @@ namespace Sahira_Hotel_Travel.View
             }
         }
 
+        private void getPackageList()
+        {
+            var user = data.TripPackages.Select(x => new
+            {
+                Kode = x.id_package,
+                Nama = x.name,
+                Hotel = x.Hotel.name,
+                Durasi = x.dayOfTrip,
+                HargaLokal = x.totalPrice_local,
+                HargaInter = x.totalPrice_international
+            });
+
+            foreach (var d in user)
+            {
+                dataGridView1.Rows.Add(d.Kode, d.Nama, d.Hotel, d.Durasi, d.HargaLokal, d.HargaInter);
+            }
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             PANEL.ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -227,6 +265,11 @@ namespace Sahira_Hotel_Travel.View
             if (MENU.Equals("destination"))
             {
                 (PANEL as pnAreaWisata).populateForm();
+            }
+
+            if (MENU.Equals("package_list"))
+            {
+                (PANEL as pnPackageList).populateForm();
             }
         }
     }
