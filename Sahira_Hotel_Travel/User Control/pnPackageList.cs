@@ -62,6 +62,7 @@ namespace Sahira_Hotel_Travel.User_Control
         {
             if (validateAll())
             {
+                MessageBox.Show(validateAll()+"");
                 TripPackage package = new TripPackage();
                 package.id_package = textBox1.Text;
                 package.name = textBox2.Text;
@@ -265,36 +266,50 @@ namespace Sahira_Hotel_Travel.User_Control
         {
             bool validAll = true;
 
-            if (!validation.isNameLengthGreaterEqualThan3(textBox2.Text))
+            try
             {
-                helpers.showExclamation("Name minimum 3 character");
+                foreach (var a in this.Controls.OfType<TextBox>().Where(x => x.Text == ""))
+                {
+                    MessageBox.Show("Please complete the form!");
+                    validAll = false;
+                }
+
+                if (!validation.isNameLengthGreaterEqualThan3(textBox2.Text))
+                {
+                    helpers.showExclamation("Name minimum 3 character");
+                    validAll = false;
+                }
+
+                if (!validation.isAddressLenghtGreaterEqualThan6(textBox3.Text))
+                {
+                    helpers.showExclamation("Descriptions minimum 6 character");
+                    validAll = false;
+                }
+
+                if (textBox5.Text.Any(x => char.IsLetter(x) || char.IsSymbol(x)))
+                {
+                    helpers.showExclamation("Duration only number!");
+                    validAll = false;
+                }
+
+                if (!validation.isDurationValid(textBox5.Text))
+                {
+                    helpers.showExclamation("Duration length should be 3-5 digit");
+                    validAll = false;
+                }
+
+                if (dataGridView1.Rows.Count <= 0)
+                {
+                    helpers.showExclamation("Please add at least 1 Destinations");
+                    validAll = false;
+                }
+            }
+            catch (Exception ex)
+            {
                 validAll = false;
             }
 
-            if (!validation.isAddressLenghtGreaterEqualThan6(textBox3.Text))
-            {
-                helpers.showExclamation("Descriptions minimum 6 character");
-                validAll = false;
-            }
-
-            if (textBox5.Text.Any(x => char.IsLetter(x) || char.IsSymbol(x)))
-            {
-                helpers.showExclamation("Duration only number!");
-                validAll = false;
-            }
-
-            if (!validation.isDurationValid(textBox5.Text))
-            {
-                helpers.showExclamation("Duration length should be 3-5 digit");
-                validAll = false;
-            }
-
-            if (dataGridView1.Rows.Count <= 0)
-            {
-                helpers.showExclamation("Please add at least 1 Destinations");
-                validAll = false;
-            }
-
+            MessageBox.Show(validAll + "");
             return validAll;
         }
 
